@@ -60,4 +60,8 @@ public class BubbleSort {
         }
         return res;
     }
+
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+    }
 }
