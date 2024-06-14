@@ -22,13 +22,17 @@ public class BubbleSort {
         if (fixed.length != data.length) {
             throw new IndexOutOfBoundsException("Длины массивов должны быть равны!");
         }
-        for (int i = data.length - 1; i >= 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (!fixed[j]) {
-                    for (int k = j + 1; k <= i; k++) {
-                        if (!fixed[k]) {
-                            if (data[j].compareTo(data[k]) > 0) {
-                                swap(j, k, data);
+        int first = firstNonFixedIndex(fixed);
+        int last = lastNonFixedIndex(fixed);
+        if (first != last) {
+            for (int i = last; i >= 0; i--) {
+                for (int j = first; j < i; j++) {
+                    if (!fixed[j]) {
+                        for (int k = j + 1; k <= i; k++) {
+                            if (!fixed[k]) {
+                                if (data[j].compareTo(data[k]) > 0) {
+                                    swap(j, k, data);
+                                }
                             }
                         }
                     }
@@ -36,5 +40,24 @@ public class BubbleSort {
             }
         }
     }
+    private static int lastNonFixedIndex(boolean[] fixed) {
+        int res = -1;
+        for (int i = fixed.length; i >= 0; i--) {
+            if (!fixed[i]) {
+                res = i;
+                break;
+            }
+        }
+        return res;
+    }
+    private static int firstNonFixedIndex(boolean[] fixed) {
+        int res = fixed.length;
+        for (int i = 0; i < fixed.length; i++) {
+            if (!fixed[i]) {
+                res = i;
+                break;
+            }
+        }
+        return res;
+    }
 }
-//[7, 2, 8, 1, 4]
