@@ -42,7 +42,7 @@ public class BubbleSort {
     }
     private static int lastNonFixedIndex(boolean[] fixed) {
         int res = -1;
-        for (int i = fixed.length - 1; i >= 0; i--) {
+        for (int i = fixed.length; i >= 0; i--) {
             if (!fixed[i]) {
                 res = i;
                 break;
@@ -63,6 +63,5 @@ public class BubbleSort {
 
     public static void main(String[] args) {
         System.out.println("Hello world!");
-        System.out.println("123455");
     }
 }
